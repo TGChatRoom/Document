@@ -16,3 +16,8 @@ struct user
   //存储用户在线状态，0表示不在线，1表示在线
   int Online;
 }
+
+
+
+
+fdsafds
