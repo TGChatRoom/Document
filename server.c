@@ -5,6 +5,8 @@ struct user
     int ID;
     //存储用户登陆密码
     char PassWord[30];
+    //存储客户端的socket描述符
+    int ClientSockfd;
     //存储用户昵称
     char Gender[10];
     //存储用户性别
