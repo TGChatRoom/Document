@@ -32,6 +32,36 @@ char *IP = "122.80.21.141"
 //记录服务器端口号
  short PORT = 8886;
 
+//*************************************************************
+//@Function Name: void InitServer()
+//@Parameter [in] : int a—
+//@Parameter [out] : int b—
+//@Parameter [in,out] : int c—
+//@Description: 初始化服务器，使用TCP协议
+//@Return Value:
+// 为1，表示：
+// 为0，表示：
+//*************************************************************
+void InitServer()
+{
+    //打印输出服务器开始工作
+    printf("聊天室服务器开始启动...");
+    
+    //创建socket
+    ServerSockfd = socket(PF_INET, SOCK_STREAM, 0);
+    //如果失败则打印相关错误信息并退出
+    if(ServerSockfd == -1)
+    {
+        perror("创建服务器socket失败");
+        printf("服务器启动失败\n");
+        exit(-1);
+    }
+    
+    //准备通信地址
+    
+}
+
+
 int main()
 {
     //定义信号集处理，最多同时服务100个客户端
