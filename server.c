@@ -148,6 +148,43 @@ void* ServiceThread(void *p)
     else
     {
         printf("客户端说：%s\n", Msg);
+        if(Msg == "SignIn")
+        {
+            //发送信息提示用户输入用户ID和密码
+             q = "请输入你的用户ID和密码，以‘/’分隔>    开";
+             strncpy(Msg, q, 100);
+             send(ClientSockfd, Msg, strlen(Msg), 0)    ;
+             //阻塞接受客户端发送过来的用户ID和密码
+             ret = recv(ClientSockfd, Msg, sizeof(Ms    g), 0);
+             //如果小于0，则表示接收错误，打印相关错误
+                 if(ret < 0)
+                 {
+                     perror("接收错误");
+                     return (void *)-3;
+                 }
+                 //如果等于0，则表示客户端断开连接，打印相关信息
+                 else if(ret == 0)
+                 {
+                     printf("客户端断开连接！");
+                 }
+                 //如果接收成功就收集4位ID号和6位密码
+                 else
+                 {
+                     //收集4位ID号
+                     char ID[4] = {0};
+                     strncpy(ID, Msg, 4);
+ 
+                     //收集6位密码
+                     char PassWord[6] = {0};
+                     strncpy(PassWord, Msg + 5, 6);
+ 
+                     //转到去用户链表里查询的函数
+                 }
+        }
+        else if(Msg == "SignUp")
+        {
+            //跳转至注册函数
+        }
     }  
 }
 
