@@ -223,6 +223,8 @@ void Service(void)
         /*开启线程，为此客户端服务*/
         pthread_t ClientPid;
         pthread_create(&ClientPid, 0, ServiceThread, &ClientFd);
+        //将ClientPid对应的线程设置为分离状态。线程结束，其对应的资源会立即被系统收回
+        pthread_detach(ClientPid);    
     }
 }
 
