@@ -10,7 +10,7 @@
 #include <signal.h>
 
 //定义用户个人信息
-struct user
+struct User
 {
     //存储服务器给用户分配的ID
     int ID;
@@ -30,10 +30,10 @@ struct user
     int Online;
 }
 
-//记录客户端ID，最大并发数为100
+//记录已注册在线用户ID
 int c[100] = {0};
 
-//记录目前有多少个用户在线(包括正在注册的用户)，也即数组的下标
+//记录已注册在线用户数组的下标
 int size = 0;
 
 //记录服务器socket
@@ -179,10 +179,7 @@ void Service(void)
             printf("客户端连接出错\n");
             continue;
         }
-        
-        /*有客户端成功连接上服务器，记录客户端socket*/
-        c[size] = ClientFd;
-        size++;
+
         //打印客户端socket
         printf("客户端%d连接成功\n", ClientFd);
         
